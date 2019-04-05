@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+    * STATEMENT OF AUTHORSHIP:
+    * I Dylan Hernandez, 000307857 certify that this material is my original work. 
+    * No other person's work has been used without due knowledge. 
+    * I have not made my work available to anyone else.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Lab 2 - Mortgage Calculator</title>
+        <style>
+            body {
+                font-family: Arial,sans-serif;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #333;
+                background-color: floralwhite;
+            }
+            .table-box {
+                background-color: lightblue;
+                padding: 10px;
+            }
+            .input-box {
+                display: block;
+                width: 95%;
+                height: 24px;
+                padding: 6px 12px;
+                font-size: 14px;
+                line-height: 1.42857143;
+                color: #555;
+                background-color: #fcfcfc;
+                background-image: none;
+                border: 1px solid #ccc;
+                margin-bottom: 5px;
+            }
+            .button {
+                display: inline-block;
+                padding: 6px 12px;
+                margin-bottom: 0;
+                font-size: 14px;
+                line-height: 1.42857143;
+                text-align: center;
+                white-space: nowrap;
+                vertical-align: middle;
+                color: #333;
+                background-color: #fff;
+                border-color: #ccc;
+            }
+            .label {
+                display: block;
+                max-width: 100%;
+                margin-bottom: 5px;
+                font-weight: 700;
+            }
+            .error {
+                color: red;
+            }
+            .container-box {
+                width: 1100px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .form {
+                padding: 8px;
+                border: 1px solid #dddddd;
+                background-color: whitesmoke;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <div class="container-box">
+            <h1>Mortgage Calculator</h1>
+            <div class="table-box">
+                <h:form id="mortgageForm" styleClass="form">
+                    <label class="label">Enter Interest Rate</label>
+                    <h:inputText id="interestRateInput" styleClass="input-box" value="#{mortgage.interestRate}" >
+                        <f:validateDoubleRange minimum="1.5" maximum="20.0" />
+                    </h:inputText>
+                    <h:message styleClass="label error" for="interestRateInput" />
+                    <label class="label">Enter Mortgage Amount</label>
+                    <h:inputText id="mortgageAmountInput" styleClass="input-box" value="#{mortgage.amount}" />
+                    <h:message styleClass="label error" for="mortgageAmountInput" />
+                    <label class="label">Enter Amortization Period</label>
+                    <h:inputText id="amortizationPeriodInput" styleClass="input-box" value="#{mortgage.amortizationPeriod}" />
+                    <h:message styleClass="label error" for="amortizationPeriodInput" />
+                    <label class="label">Annual Extra Payment</label>
+                    <h:inputText id="extraPaymentInput" styleClass="input-box" value="#{mortgage.extraAnnualPaymentAmount}" />
+                    
+                    <br />
+                    <h:commandButton value="Calculate" styleClass="button" action="mortgagetable" />&nbsp;
+                    <h:button value="Reset To Defaults" styleClass="button" outcome="index"/>
+                </h:form>
+            </div>
+        </div>
+    </h:body>
+    
+</html>
+
